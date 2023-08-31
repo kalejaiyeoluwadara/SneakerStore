@@ -1,8 +1,12 @@
 import React from 'react'
-import { AiOutlineMenu, AiOutlineShoppingCart } from "react-icons/ai";
+import menu from '../../assets/icon-menu.svg'
+import cart from "../../assets/icon-cart.svg";
 import {motion,useAnimation} from 'framer-motion'
+import { useGlobal } from '../../context';
 import img from '/images/image-avatar.png'
-function Nav({modal,setModal,items,setItems,navigation,setNavi,control}) {
+function Nav({control}) 
+{
+  const { items, setItems, modal, setModal, navigation, setNavi } = useGlobal();
   return (
     <div className="bg-white shadow-md px-3 py-6 flex justify-between items-center">
       <div className="flex flex-row items-center justify-center">
@@ -12,12 +16,14 @@ function Nav({modal,setModal,items,setItems,navigation,setNavi,control}) {
             scale: 0.6,
           }}
         >
-          <AiOutlineMenu
+        
+          <img
+            src={menu}
             onClick={() => {
               setNavi(true);
             }}
-            size={35}
-            className="mx-2 mr-4 "
+            className="mx-2 h-5 w-6 mr-4 "
+            alt=""
           />
         </motion.div>
         <h1 className="text-[1.6rem] font-[600]">Sneakers</h1>
@@ -29,16 +35,11 @@ function Nav({modal,setModal,items,setItems,navigation,setNavi,control}) {
               opacity: 0.7,
               scale: 0.6,
             }}
+            onClick={() => {
+              setModal(!modal);
+            }}
           >
-            <AiOutlineShoppingCart
-              
-              onClick={() => {
-                setModal(!modal);
-                
-              }}
-              size={30}
-              className="animate-bounce mx-4 cursor-pointer"
-            />
+            <img src={cart} className="mx-2 h-7 w-8 mr-4 " alt="" />
           </motion.div>
 
           {items > 0 && (

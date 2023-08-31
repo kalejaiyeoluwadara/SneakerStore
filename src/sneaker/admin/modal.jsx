@@ -1,13 +1,14 @@
 import React from 'react'
 import { AiTwotoneDelete } from "react-icons/ai";
+import del from '../../assets/icon-delete.svg'
 import { motion, useAnimate } from "framer-motion";
+import { useGlobal } from '../../context';
 import img1 from "/images/image-product-1.jpg";
-const Modal = ({items,setItems,control}) =>{
+const Modal = () =>{
     const price = 125.00;
+    const { items, setItems,setModal} = useGlobal();
     return (
-      <motion.div 
-      animate={control}
-      className="h-[250px] w-[90%] absolute top-[20%] z-10 left-[5%] bg-white rounded-xl shadow-xl">
+      <motion.div className="h-[250px] w-[90%] absolute top-[20%] z-10 left-[5%] bg-white rounded-xl shadow-xl">
         <div className="flex px-2 py-2 border-b-2 border-b-gray-200">
           <h1 className="text-start font-bold">Cart</h1>
         </div>
@@ -34,12 +35,16 @@ const Modal = ({items,setItems,control}) =>{
                   scale: 0.6,
                 }}
               >
-                <AiTwotoneDelete
-                  className="text-gray-400 cursor-pointer"
+                <img
+                  src={del}
                   onClick={() => {
                     setItems(0);
                   }}
-                  size={30}
+                  style={{
+                    color:"red"
+                  }}
+                  className="text-gray-900 h-8 cursor-pointer"
+                  alt=""
                 />
               </motion.div>
             </div>
@@ -47,7 +52,8 @@ const Modal = ({items,setItems,control}) =>{
               whileTap={{
                 opacity: 0.6,
               }}
-              className="bg-orange-500 w-[90%] h-[40px] text-white font-[600] rounded-md "
+              className="bg-orange-500 mx-4 w-[90%] h-[40px] text-white font-[600] rounded-md "
+              onClick={() => setModal(false)}
             >
               checkOut
             </motion.button>

@@ -3,7 +3,8 @@ import img1 from "/images/image-product-1.jpg";
 import img2 from "/images/image-product-2.jpg";
 import img3 from "/images/image-product-3.jpg";
 import img4 from "/images/image-product-4.jpg";
-import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import right from "../../assets/icon-next.svg";
+import left from "../../assets/icon-previous.svg";
 import { motion } from "framer-motion";
 
 function Slider() {
@@ -30,34 +31,48 @@ function Slider() {
 
   return (
     <div className="w-screen flex flex-col items-center ">
-      <img className="h-100px w-[100%]" src={images[state]} alt="" />
-      <div className="w-[100%] flex px-6 justify-between items-center place-items-center absolute top-[35%]">
+      <img
+        className="h-100px sm:w-[80%] sm:rounded-md sm:h-[100%] w-[100%]"
+        src={images[state]}
+        alt=""
+      />
+      <div className="w-[100%] invisible flex px-6 justify-between items-center place-items-center absolute top-[40%]">
         <motion.div
+          className="bg-gray-200 h-[50px] w-[50px] rounded-full flex items-center justify-center "
           whileTap={{
             scale: 0.9,
           }}
           whileHover={{
-            scale: 1.1,
+            scale: 1.04,
           }}
+          transition={{
+            duration: 0.3,
+          }}
+          onClick={Prev}
         >
-          <BiChevronLeft
-            onClick={Prev}
-            className=" text-gray-900 shadow-xl bg-gray-200 rounded-full"
-            size={40}
+          <img
+            src={left}
+            className=" text-gray-900 h-[20px] w-[20px] cursor-pointer shadow-xl "
+            alt=""
           />
         </motion.div>
         <motion.div
+          className="bg-gray-200 h-[50px] w-[50px] rounded-full flex items-center justify-center "
           whileTap={{
             scale: 0.9,
+          }}
+          transition={{
+            duration: 0.3,
           }}
           whileHover={{
             scale: 1.1,
           }}
+          onClick={Next}
         >
-          <BiChevronRight
-            onClick={Next}
-            className="text-gray-900   shadow-xl bg-gray-200 rounded-full"
-            size={40}
+          <img
+            src={right}
+            className=" text-gray-900 h-[20px] w-[20px] cursor-pointer shadow-xl "
+            alt=""
           />
         </motion.div>
         {/* <p>{state}</p> */}

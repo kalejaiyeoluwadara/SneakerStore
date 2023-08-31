@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 import { motion } from "framer-motion";
-
-function Home({items,setItems}) {
+import { useGlobal } from '../../context';
+function Home() {
   const [local,setLocal] = useState(0)
+  const { items, setItems } = useGlobal();
   return (
-    <div className="px-4 mt-4">
+    <div className="px-8 mt-4">
       <h3 className="text-orange-600  font-[500]  text-[22px] mb-2 text-start">
         SNEAKER COMPANY
       </h3>
