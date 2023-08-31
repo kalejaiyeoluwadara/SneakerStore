@@ -1,5 +1,4 @@
 import React from 'react'
-import { AiTwotoneDelete } from "react-icons/ai";
 import del from '../../assets/icon-delete.svg'
 import { motion, useAnimate } from "framer-motion";
 import { useGlobal } from '../../context';
